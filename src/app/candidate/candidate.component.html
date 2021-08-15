@@ -1,0 +1,97 @@
+<div class="container">
+  <div class="row">
+    <h2> Candidates </h2>
+  </div>
+
+
+
+  <div class="row">
+    <div class="col 2">
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1" (click)="filterByMale()">
+        <label class="form-check-label" for="mCheck" >Male</label>
+      </div>
+    </div>
+
+    <div class="col 2">
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="fCheck" (click)="filterByFeMale()" >
+        <label class="form-check-label" for="exampleCheck1">Female</label>
+      </div>
+    </div>
+
+
+    <div class="col 8">
+      <input type="text" name="searchTextBox" placeholder="Whome are you looking for?" [(ngModel)]="searchTerm" (keyup)="performSearch()"/>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col" (click)="sortByFirstName()">First Name</th>
+          <th scope="col" (click)="sortByLastName()">Last Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Gender</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor=" let candidate Of tempCondidates">
+          <th scope="row">{{candidate.id}}</th>
+          <td>{{candidate.first_name}}</td>
+          <td>{{candidate.last_name}}</td>
+          <td>{{candidate.email}}</td>
+          <td>{{candidate.gender}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <!--Add New Condidate-->
+
+  <div class="row">
+    <h2>Add New Candidates </h2>
+  </div>
+
+  <div class="row">
+    <div class="col 6">
+      <input type="text" name="firstName" placeholder="First Name" [(ngModel)] = "condidate.first_name"/>
+    </div>
+    <div class="col 6">
+      <input type="text" name="firstName" placeholder="Last Name"
+      [(ngModel)] = "condidate.last_name"/>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col 12">
+      <input type="text" name="firstName" placeholder="Email"
+      [(ngModel)] = "condidate.email"/>
+    </div>
+  </div>
+
+  <div class="row">
+
+
+    <div class="col 6">
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Male"[(ngModel)]="condidate.gender">
+        <label class="form-check-label" for="inlineRadio1">Male</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Female" [(ngModel)]="condidate.gender">
+        <label class="form-check-label" for="inlineRadio2">Female</label>
+      </div>
+    </div>
+
+    <div class="col 6">
+      <button (click) = "onSubmit()">Add</button>
+    </div>
+
+  </div>
+
+</div>
